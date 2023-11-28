@@ -1,0 +1,49 @@
+[
+	{
+		"tag": "Meta",
+		"attributes":
+		{
+			"tagID": "Meta_Viewport",
+			"name": "viewport",
+			"content": "width=device-width, initial-scale=1.0"
+		}
+	},
+	{
+		"tag": "Meta",
+		"attributes":
+		{
+			"tagID": "Meta_Author",
+			"name": "author",
+			"content": "Florian Burghardt"
+		}
+	},
+	{
+		"tag": "Meta",
+		"attributes":
+		{
+			"tagID": "Meta_Creator",
+			"name": "creator",
+			"content": "Florian Burghardt"
+		}
+	},
+	{
+		"tag": "Link",
+		"attributes":
+		{
+			"tagID": "Favicon",
+			"rel": "icon",
+			"type": "image/JPG",
+			"href": "https://apisurvivor.fburghardt.de/img/favicon.png"
+		}
+	},
+	{
+		"tag": "Link",
+		"attributes":
+		{
+			"tagID": "CustomCSS",
+			"rel": "stylesheet",
+			"type": "text/css",
+			"href": "https://apisurvivor.fburghardt.de/css/custom.css"
+		}
+	}
+]

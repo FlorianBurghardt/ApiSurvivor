@@ -1,0 +1,6 @@
+_log/
+_inc/
+_auth/
+.htaccess
+old.js
+php.ini

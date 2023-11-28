@@ -1,0 +1,29 @@
+[
+	{
+		"tag": "Script",
+		"attributes":
+		{
+			"tagID": "ScriptClasses",
+			"src": "https://apisurvivor.fburghardt.de/js/classes.js",
+			"type": "text/javascript"
+		}
+	},
+	{
+		"tag": "Script",
+		"attributes":
+		{
+			"tagID": "ScriptEvents",
+			"src": "https://apisurvivor.fburghardt.de/js/events.js",
+			"type": "text/javascript"
+		}
+	},
+	{
+		"tag": "Script",
+		"attributes":
+		{
+			"tagID": "ScriptVariables",
+			"src": "https://apisurvivor.fburghardt.de/js/variables.js",
+			"type": "text/javascript"
+		}
+	}
+]

@@ -1,0 +1,6 @@
+{
+	"title": "ApiSurvivor",
+	"headElements": ["../Application/JSON/meta.json", "../Application/JSON/bootstrapCSS.json"],
+	"headerTitle": "ApiSurvivor",
+	"scriptFiles": ["../Application/JSON/javascript.json", "../Application/JSON/bootstrapScript.json"]
+}

@@ -1,0 +1,96 @@
+/* General */
+body {
+	background-color: rgb(228, 206, 169) !important;
+	color: rgb(35, 62, 57) !important;
+}
+/* Exception */
+.exception {
+	text-align: center;
+}
+.exceptionContent {
+	color : rgb(136, 0, 21);
+}
+img.exception {
+	max-width: 250px;
+}
+/* Header */
+.empty-space {
+	width: 56px;
+}
+/* Navigation offcanvas */
+@media (max-width: 700px) {
+	.width-full {
+		width: 100% !important;
+	}
+}
+@media (min-width: 700px) {
+	.width-full {
+		width: 700px !important;
+	}
+}
+.offcanvas-footer {
+	position: absolute;
+	bottom: 0;
+	padding: 1rem;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.empty-icon {
+	display: inline-block;
+	width: 1rem;
+}
+.icon-size {
+	font-size: 1.5rem;
+}
+.dropup-icon {
+	font-size: 0.5rem;
+	vertical-align: middle;
+	margin-left: 0.5rem;
+}
+.dropdown-item.active {
+	background-color: rgb(35, 62, 57);
+	border: solid;
+	border-color: gray;
+	border-width: 1px;
+	border-radius: .5rem;
+	padding-left: -1rem;
+}
+.dropdown-item:hover {
+	background-color: gray;
+	border-radius: .5rem;
+	color: rgb(35, 62, 57);
+	font-weight: bold;
+}
+.request-method {
+	font-size: 0.6rem;
+	display: inline-block;
+	min-width: 2rem;
+	text-align: right;
+}
+.method-GET {
+	color: #00ff00;
+}
+.method-POST {
+	color: #ffe100;
+}
+.method-PUT {
+	color: #0048ff;
+}
+.method-PATCH {
+	color: #00d0ff;
+}
+.method-DELETE {
+	color: #ff0000;
+}
+.method-HEAD {
+	color: #007700;
+}
+.method-OPTIONS {
+	color: #f700ff;
+}
+.offcanvas-body ul {
+	margin-bottom: 0.25rem;
+	padding-left: 0.5rem;
+}
