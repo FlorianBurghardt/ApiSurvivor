@@ -1,7 +1,8 @@
-// Event variables
+// General variables
 var header;
 var headerSpace;
 var height;
+const dataPrefix = 'data-apisurvivor-';
 
 // Listmenu variables
 var database =
@@ -32,6 +33,7 @@ var database =
 	}
 };
 
+// Request constants
 const RequestMethod = 
 {
 	'GET':'GET',
@@ -42,4 +44,6 @@ const RequestMethod =
 	'HEAD':'HEAD',
 	'OPTIONS':'OPTIONS'
 };
+
+// Application initialization
 const contentManager = new ContentManager(database);

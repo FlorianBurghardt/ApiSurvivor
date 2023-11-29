@@ -50,6 +50,11 @@ class ContentManager
 	}
 	//#endregion
 
+	//#region Getter / Setter
+	getAttribute(_elementId, _attribute) { return this.DOMHandler.getAttribute(_elementId, _attribute); }
+	setAttribute(_elementId, _attributeName, _attributeValue) { return this.DOMHandler.setAttribute(_elementId, _attributeName, _attributeValue); }
+	//#endregion
+
 	//#region Public Methods
 	/**
 	 * Adds an element to the HTML document and saves it in the database.
@@ -154,7 +159,7 @@ class DOMHandler
 	}
 	//#endregion
 
-	//#region Getter
+	//#region Getter / Setter
 	/**
 	 * Get the DOM element with the given _id.
 	 * @param {string} _id The id of the DOM element to search.
@@ -178,6 +183,34 @@ class DOMHandler
 			}
 		}
 		return idList;
+	}
+
+	/**
+	 * Retrieves the value of the specified attribute from the element with the given ID.
+	 * @param {string} _elementId - The ID of the element to retrieve the attribute from.
+	 * @param {string} _attribute - The name of the attribute to retrieve without the data-prefix.
+	 * @return {string|null} The value of the specified attribute, or null if the element or attribute does not exist.
+	 */
+	getAttribute(_elementId, _attribute)
+	{
+		var element = document.getElementById(_elementId);
+		if (element === null || element === undefined) { return null; }
+		return element.getAttribute(dataPrefix + _attribute);
+	}
+
+	/**
+	 * Sets the attribute value of an element with the given ID.
+	 * @param {string} _elementId - The ID of the element.
+	 * @param {string} _attributeName - The name of the attribute without the data-prefix.
+	 * @param {string} _attributeValue - The value to set for the attribute.
+	 * @return {boolean} Returns true if the attribute is set successfully, or null if the element is not found.
+	 */
+	setAttribute(_elementId, _attributeName, _attributeValue)
+	{
+		var element = document.getElementById(_elementId);
+		if (element === null || element === undefined) { return null; }
+		element.setAttribute(dataPrefix + _attributeName, _attributeValue);
+		return true;
 	}
 	//#endregion
 

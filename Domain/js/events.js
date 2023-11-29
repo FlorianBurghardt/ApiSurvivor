@@ -17,6 +17,12 @@ function ready()
 	addButton.textContent = "Restore Elements"; 
 	addButton.onclick = function () { restore() };
 	document.body.appendChild(addButton);
+
+	addButton = document.createElement("Button");
+	addButton.id = "DataTest_Button";
+	addButton.textContent = "Data Attrribute Test"; 
+	addButton.onclick = function () { test() };
+	document.body.appendChild(addButton);
 }
 // Site resize event
 function resize()
@@ -59,5 +65,10 @@ function add()
 function restore()
 {
 	contentManager.restoreAllElements();
+}
+function test()
+{
+	console.log(contentManager.setAttribute('HeaderSpace','newTest', 'Hello darkness my old friend'));
+	console.log(contentManager.getAttribute('HeaderSpace','newTest'));
 }
 //#endregion
