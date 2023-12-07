@@ -308,9 +308,9 @@ class DOMHandler
 		const newListItem = document.createElement('li');
 		newListItem.id = _id;
 		newListItem.textContent = _name;
-		newListItem.type = 'LIST';
 
 		_parent.appendChild(newListItem);
+		this.setAttribute(newListItem.id, 'type', 'LIST');
 		return newListItem;
 	}
 
@@ -330,7 +330,6 @@ class DOMHandler
 		newList.style.listStyle = 'none';
 		newFolder.appendChild(newList);
 		newList.id = _id;
-		newList.type = 'FOLDER';
 
 		const newFolderIcon = document.createElement('i');
 		newFolderIcon.className = 'bi bi-folder';
@@ -342,6 +341,7 @@ class DOMHandler
 		newList.appendChild(newContent);
 
 		_parent.appendChild(newFolder);
+		this.setAttribute(newList.id, 'type', 'FOLDER');
 		return newList;
 	}
 
@@ -357,7 +357,6 @@ class DOMHandler
 	{
 		const newRequest = document.createElement('li');
 		newRequest.id = _id;
-		newRequest.type = 'REQUEST';
 
 		const newRequestMethod = document.createElement('span');
 		newRequestMethod.className = 'request-method method-' + _requestMethod;
@@ -371,6 +370,7 @@ class DOMHandler
 		newRequest.appendChild(newRequestContent);
 
 		_parent.appendChild(newRequest);
+		this.setAttribute(newRequest.id, 'type', 'REQUEST');
 		return newRequest;
 	}
 

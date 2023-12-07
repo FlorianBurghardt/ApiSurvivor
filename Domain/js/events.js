@@ -68,7 +68,7 @@ function restore()
 }
 function test()
 {
-	console.log(contentManager.setAttribute('HeaderSpace','newTest', 'Hello darkness my old friend'));
-	console.log(contentManager.getAttribute('HeaderSpace','newTest'));
+	contentManager.setAttribute('HeaderSpace','newTest', 'Hello darkness my old friend');
+	contentManager.getAttribute('HeaderSpace','newTest');
 }
 //#endregion
