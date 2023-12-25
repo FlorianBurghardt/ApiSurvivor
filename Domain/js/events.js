@@ -11,18 +11,6 @@ function ready()
 	addButton.textContent = "Add Elements"; 
 	addButton.onclick = function () { add() };
 	document.body.appendChild(addButton);
-
-	addButton = document.createElement("Button");
-	addButton.id = "Restore_Button";
-	addButton.textContent = "Restore Elements"; 
-	addButton.onclick = function () { restore() };
-	document.body.appendChild(addButton);
-
-	addButton = document.createElement("Button");
-	addButton.id = "DataTest_Button";
-	addButton.textContent = "Data Attrribute Test"; 
-	addButton.onclick = function () { test() };
-	document.body.appendChild(addButton);
 }
 // Site resize event
 function resize()
@@ -60,15 +48,5 @@ function add()
 	{
 		console.log(error);
 	}
-}
-
-function restore()
-{
-	contentManager.restoreAllElements();
-}
-function test()
-{
-	contentManager.setAttribute('HeaderSpace','newTest', 'Hello darkness my old friend');
-	contentManager.getAttribute('HeaderSpace','newTest');
 }
 //#endregion

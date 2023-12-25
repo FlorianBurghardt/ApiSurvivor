@@ -47,6 +47,7 @@ class ContentManager
 		
 		this.DOMHandler = new DOMHandler();
 		this.DBHandler = new DBHandler(_database);
+		this.restoreAllElements();
 	}
 	//#endregion
 
@@ -153,10 +154,7 @@ class DOMHandler
 	 * Constructor to handle DOM elements.
 	 * @property {array} this.idList - Stores all DOM element ids from HTML doument.
 	 */
-	constructor()
-	{
-		this.idList = this.getAllElementIds();
-	}
+	constructor() { this.idList = this.getAllElementIds(); }
 	//#endregion
 
 	//#region Getter / Setter
@@ -177,10 +175,7 @@ class DOMHandler
 		var elements = document.getElementsByTagName("*");
 		for (const element of elements)
 		{
-			if (element.id)
-			{
-				idList.push(element.id);
-			}
+			if (element.id) { idList.push(element.id); }
 		}
 		return idList;
 	}
@@ -255,6 +250,7 @@ class DOMHandler
 
 		switch (_type)
 		{
+			// ToDo: CleanUp this switch remove methods to separate classes
 			case 'LIST':
 				newElement.element = this._createListElement(newElement.id, newElement.name, parent);
 				break;
@@ -462,10 +458,7 @@ class DBHandler
 			const store = transaction.objectStore(_tableName);
 			store.put(_data);
 
-			transaction.oncomplete = (event) =>
-			{
-				db.close();
-			}
+			transaction.oncomplete = (event) => { db.close(); }
 		};
 	}
 
@@ -515,7 +508,6 @@ class DBHandler
 			};
 		});
 	}
-	  
 
 	/**
 	 * Sorts the given data based on the specified sort criteria.
@@ -582,6 +574,42 @@ class DBHandler
 		return _data;
 	}
 	//#endregion
+}
+
+class Request
+{
+	constructor()
+	{
+		this.name = undefined;
+		this.id = undefined;
+		this.requestMethod = undefined;
+		this.url = undefined;
+		this.headers = [];
+		this.params = [];
+		this.body = undefined;
+	}
+	console() { console.log(this); }
+}
+
+class Workspace
+{
+	constructor()
+	{
+		this.name = undefined;
+		this.id = undefined;
+	}
+	console() { console.log(this); }
+}
+
+class Environment
+{
+	constructor()
+	{
+		this.name = undefined;
+		this.id = undefined;
+		this.list = [];
+	}
+	console() { console.log(this); }
 }
 
 /**
