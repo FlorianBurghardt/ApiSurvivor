@@ -5,7 +5,6 @@ namespace de\fburghardt\ApiSurvivor\Application\Parts;
 use de\fburghardt\Library\HTML\Tag\Area\Aside;
 use de\fburghardt\Library\HTML\Tag\Block\Div;
 use de\fburghardt\Library\HTML\Tag\Body;
-
 #endregion
 
 class Environment_Menu
@@ -41,8 +40,7 @@ class Environment_Menu
 				[
 					'labelledby' => 'EnvironmentMenuHeaderTitle'
 				]
-			],
-			'EnvironmentMenu'
+			]
 		);
 		$body->add($this->environment);
 	}
@@ -87,8 +85,7 @@ class Environment_Menu
 						]
 					]
 				]
-			],
-			'EnvironmentMenuHeader'
+			]
 		);
 		$this->environment->add($this->environmentHeader);
 	}
@@ -109,8 +106,7 @@ class Environment_Menu
 						]
 					]
 				]
-			],
-			'EnvironmenteMenuBody'
+			]
 		);
 		$this->environment->add($this->environmentBody);
 		$this->menues['environment-menu'] = $this->environment::getTagById('EnvironmentMenuList');

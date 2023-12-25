@@ -42,8 +42,7 @@ class Workspace_Menu
 				[
 					'labelledby' => 'WorkspaceMenuHeaderTitle'
 				]
-			],
-			'WorkspaceMenu'
+			]
 		);
 		$body->add($this->workspace);
 	}
@@ -88,8 +87,7 @@ class Workspace_Menu
 						]
 					]
 				]
-			],
-			'WorkspaceMenuHeader'
+			]
 		);
 		$this->workspace->add($this->workspaceHeader);
 	}
@@ -110,8 +108,7 @@ class Workspace_Menu
 						]
 					]
 				]
-			],
-			'WorkspaceMenuBody'
+			]
 		);
 		$this->workspace->add($this->workspaceBody);
 		$this->menues['workspace-menu'] = $this->workspace::getTagById('WorkspaceMenuList');
@@ -234,8 +231,7 @@ class Workspace_Menu
 					]
 				]
 
-			],
-			'WorkspaceMenuFooter'
+			]
 		);
 		$this->workspace->add($this->workspaceFooter);
 		$this->menues['language-menu'] = $this->workspace::getTagById('LanguageMenuList');

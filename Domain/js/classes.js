@@ -96,7 +96,6 @@ class ContentManager
 			this.DBHandler.getManyFromDatabase(table.name, null, {'structure' : 1, 'id' : 1})
 			.then((result) =>
 			{
-				console.log(result);
 				result.forEach((element) =>
 				{
 					var parent = null;

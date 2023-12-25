@@ -6,11 +6,12 @@ function ready()
 	headerSpace = document.getElementById("HeaderSpace");
 	setHeaderSpace();
 
+	var worspace = document.getElementById("WorkspaceMenuBody");
 	var addButton = document.createElement("Button");
 	addButton.id = "Add_Button";
 	addButton.textContent = "Add Elements"; 
 	addButton.onclick = function () { add() };
-	document.body.appendChild(addButton);
+	worspace.appendChild(addButton);
 }
 // Site resize event
 function resize()
