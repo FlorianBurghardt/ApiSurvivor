@@ -5,6 +5,7 @@ namespace de\fburghardt\ApiSurvivor\Application\Parts;
 use de\fburghardt\Library\HTML\Tag\Area\Aside;
 use de\fburghardt\Library\HTML\Tag\Block\Div;
 use de\fburghardt\Library\HTML\Tag\Body;
+use de\fburghardt\Library\HTML\Tag\Lists\Li;
 #endregion
 
 class Workspace_Menu
@@ -148,11 +149,10 @@ class Workspace_Menu
 									'innerContent' =>
 									[
 										[
-											'tag' => 'I',
+											'tag' => 'Span',
 											'attributes' =>
 											[
-												'tagID' => 'LanguageMenuIcon',
-												'class' => 'bi bi-translate" icon-size'
+												'id' => 'CurrentLanguage',
 											]
 										],
 										[
@@ -236,6 +236,21 @@ class Workspace_Menu
 		$this->workspace->add($this->workspaceFooter);
 		$this->menues['language-menu'] = $this->workspace::getTagById('LanguageMenuList');
 		$this->menues['theme-menu'] = $this->workspace::getTagById('ThemeMenuList');
+
+		$this->addLanguageDropdown();
+	}
+	private function addLanguageDropdown(): void
+	{
+		foreach ($_SERVER['config']['languages'] as $key => $value) {
+			$li = new Li(
+				[
+					'id' => 'Language-'.$value,
+					'class' => 'dropdown-item'
+				]
+			);
+			$li->add($value);
+			$this->menues['language-menu']->add($li);
+		}
 	}
 	#endregion
 }
