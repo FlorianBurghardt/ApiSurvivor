@@ -1,6 +1,18 @@
 {
 	"title": "ApiSurvivor",
-	"headElements": ["../Application/JSON/meta.json", "../Application/JSON/bootstrapCSS.json"],
+	"headElements":
+	[
+		"../Application/JSON/meta.json",
+		"../Application/JSON/bootstrapCSS.json"
+	],
 	"headerTitle": "ApiSurvivor",
-	"scriptFiles": ["../Application/JSON/javascript.json", "../Application/JSON/bootstrapScript.json"]
+	"externalScripts":
+	[
+		"../Application/JSON/bootstrapScript.json"
+	],
+	"languages":
+	[
+		"EN",
+		"DE"
+	]
 }

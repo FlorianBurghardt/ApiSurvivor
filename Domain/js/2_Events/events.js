@@ -9,7 +9,7 @@ function ready()
 	var worspace = document.getElementById("WorkspaceMenuBody");
 	var addButton = document.createElement("Button");
 	addButton.id = "Add_Button";
-	addButton.textContent = "Add Elements"; 
+	addButton.textContent = "Add Elements";
 	addButton.onclick = function () { add() };
 	worspace.appendChild(addButton);
 }

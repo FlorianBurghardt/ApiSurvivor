@@ -22,6 +22,11 @@ var database =
 		{
 			'id':'ActiveList',
 			'name':'Active'
+		},
+		{
+			'skip':true,
+			'id':'UserSettings',
+			'name':'UserSettings'
 		}
 	],
 	'types':
@@ -33,7 +38,7 @@ var database =
 	}
 };
 
-// Request constants
+// Allowed Request Methods
 const RequestMethod = 
 {
 	'GET':'GET',

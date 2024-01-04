@@ -7,6 +7,7 @@ use de\fburghardt\ApiSurvivor\Application\Parts\Environment_Menu;
 use de\fburghardt\ApiSurvivor\Application\Parts\Page_Header;
 use de\fburghardt\ApiSurvivor\Application\Parts\Page_Scripts;
 use de\fburghardt\ApiSurvivor\Application\Parts\Workspace_Menu;
+use de\fburghardt\Library\Helper\FileLoader;
 use de\fburghardt\Library\Helper\JSON;
 use de\fburghardt\Library\HTML\Elementgroup\Site;
 use de\fburghardt\Library\HTML\Tag\Body;
@@ -51,7 +52,16 @@ class StartUp
 	private function setWorkspaceMenu(): void { new Workspace_Menu($this->body); }
 	private function setEnvironmentMenu(): void { new Environment_Menu($this->body); }
 	private function setActiveRequestMenu(): void { new ActiveRequest_Menu($this->body); }
-	private function setScripts(): void { new Page_Scripts($_SERVER['config']['scriptFiles'], $this->body); }
+	private function setScripts(): void
+	{
+		$spageScripts = new Page_Scripts($_SERVER['config']['externalScripts'], $this->body);
+		$dir = dirname(__DIR__, 2).'/Domain/js/*';
+		$arr = FileLoader::scan($dir);
+		$arr = FileLoader::trim($arr, '/js/', true);
+		$arr = FileLoader::addpath($arr, 'https://apisurvivor.fburghardt.de/js/');
+		$spageScripts->addScriptsByNames($arr);
+
+	}
 	#endregion
 }
 ?>
