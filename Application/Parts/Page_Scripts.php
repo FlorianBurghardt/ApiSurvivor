@@ -4,6 +4,7 @@ namespace de\fburghardt\ApiSurvivor\Application\Parts;
 
 use de\fburghardt\Library\HTML\Tag\Block\Div;
 use de\fburghardt\Library\HTML\Tag\Body;
+use de\fburghardt\Library\HTML\Tag\Head\Script;
 #endregion
 
 class Page_Scripts
@@ -30,6 +31,18 @@ class Page_Scripts
 	{
 		$this->scripts->setScripts($scriptsJSON);
 	}
+
+	public function addScriptsByNames(array $scriptFiles): void
+	{
+		foreach ($scriptFiles as $file)
+		{
+			$script = new Script(['src' => $file, 'type' => 'text/javascript']);
+			$this->scripts->add($script);
+		}
+	}
+	#endregion
+
+	#region private methods
 	private function setScripts(array|string|null $scriptsJSON): void
 	{
 		if (!is_null($scriptsJSON))
