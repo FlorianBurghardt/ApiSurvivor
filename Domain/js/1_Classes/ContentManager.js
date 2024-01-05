@@ -19,20 +19,18 @@ class ContentManager
 	 */
 	constructor(_database)
 	{
-		if (_database.tables === undefined) { throw new Exception('_database.tables{array} is not defined', 1000); }
+		this.DOMHandler = new DOMHandler();
+		this.DBHandler = new DBHandler(_database);
+		this.elementTypes = _database.types;
 		this.elementContainers = _database.tables;
+
 		this.elementContainers.forEach((container) =>
 		{
 			if (container.skip === true) { return; }
-			if (container.id === undefined) { throw new Exception('_database.tables[].id{string} is not defined', 1001); }
 			container.element = document.getElementById(container.id);
-			if (container.element === null) { throw new Exception('HTML element with id "' + container.id + '" not found', 1002); }
 		});
 
-		this.elementTypes = _database.types;
 		
-		this.DOMHandler = new DOMHandler();
-		this.DBHandler = new DBHandler(_database);
 		this.restoreAllElements();
 	}
 	//#endregion
