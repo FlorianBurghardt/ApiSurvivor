@@ -24,8 +24,7 @@ var database =
 			'name':'Active'
 		},
 		{
-			'skip':true,
-			'id':'UserSettings',
+			'id':'UserSettingsList',
 			'name':'UserSettings'
 		}
 	],

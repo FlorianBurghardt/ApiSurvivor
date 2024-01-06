@@ -59,7 +59,7 @@ class ContentManager
 		if (_name === undefined) { throw new Exception('_name{string} is not defined', 1101); }
 
 		let elementContainer = this._getContainerByType(_type);
-		let directParent = this.DOMHandler.getElementById(_directParentId);
+		let directParent = document.getElementById(_directParentId);
 
 		const newElement = this.DOMHandler.createElementByType(_type, _name, elementContainer.element, directParent);
 
@@ -84,7 +84,7 @@ class ContentManager
 				result.forEach((element) =>
 				{
 					var parent = null;
-					if (element.parentID !== container.id) { parent = this.DOMHandler.getElementById(element.parentID); }
+					if (element.parentID !== container.id) { parent = document.getElementById(element.parentID); }
 					this.DOMHandler.createElementByType(element.type, element.name, container.element, parent, element.id, element.method);
 				});
 			});

@@ -14,13 +14,6 @@ class DOMHandler
 
 	//#region Getter / Setter
 	/**
-	 * Get the DOM element with the given _id.
-	 * @param {string} _id The id of the DOM element to search.
-	 * @return DOM element or null if not found
-	 */
-	getElementById(_id) { return document.getElementById(_id); }
-
-	/**
 	 * Loads all DOM element ids from HTML doument.
 	 * @return {array} The list of all DOM element ids.
 	 */
@@ -131,7 +124,7 @@ class DOMHandler
 	updateContentById(_id, _newContent)
 	{
 		// TODO Implement
-		// const element = this.getElementById(_id);
+		// const element = document.getElementById(_id);
 		// if (element)
 		// {
 		// 	element.textContent = _newContent;
