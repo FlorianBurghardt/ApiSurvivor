@@ -9,10 +9,5 @@
 	"externalScripts":
 	[
 		"../Application/JSON/bootstrapScript.json"
-	],
-	"languages":
-	[
-		"EN",
-		"DE"
 	]
 }

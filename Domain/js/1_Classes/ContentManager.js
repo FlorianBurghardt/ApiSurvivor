@@ -30,8 +30,9 @@ class ContentManager
 			container.element = document.getElementById(container.id);
 		});
 
-		
 		this.restoreAllElements();
+
+		this.LanguageHandler = new LanguageHandler(this.DOMHandler);
 	}
 	//#endregion
 
