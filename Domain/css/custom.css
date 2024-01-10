@@ -94,3 +94,6 @@ img.exception {
 	margin-bottom: 0.25rem;
 	padding-left: 0.5rem;
 }
+.hidden {
+	display: none;
+}

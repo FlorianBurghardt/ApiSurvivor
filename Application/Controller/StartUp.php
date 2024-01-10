@@ -6,6 +6,7 @@ use de\fburghardt\ApiSurvivor\Application\Parts\ActiveRequest_Menu;
 use de\fburghardt\ApiSurvivor\Application\Parts\Environment_Menu;
 use de\fburghardt\ApiSurvivor\Application\Parts\Page_Header;
 use de\fburghardt\ApiSurvivor\Application\Parts\Page_Scripts;
+use de\fburghardt\ApiSurvivor\Application\Parts\UserSetting_Menu;
 use de\fburghardt\ApiSurvivor\Application\Parts\Workspace_Menu;
 use de\fburghardt\Library\Helper\FileLoader;
 use de\fburghardt\Library\Helper\JSON;
@@ -43,6 +44,7 @@ class StartUp
 		$this->setWorkspaceMenu();
 		$this->setEnvironmentMenu();
 		$this->setActiveRequestMenu();
+		$this->setUserSettings();
 		$this->setScripts();
 	}
 	#endregion
@@ -52,6 +54,7 @@ class StartUp
 	private function setWorkspaceMenu(): void { new Workspace_Menu($this->body); }
 	private function setEnvironmentMenu(): void { new Environment_Menu($this->body); }
 	private function setActiveRequestMenu(): void { new ActiveRequest_Menu($this->body); }
+	private function setUserSettings(): void { new UserSetting_Menu($this->body); }
 	private function setScripts(): void
 	{
 		$spageScripts = new Page_Scripts($_SERVER['config']['externalScripts'], $this->body);
