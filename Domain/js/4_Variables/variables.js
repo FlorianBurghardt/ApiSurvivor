@@ -33,7 +33,8 @@ var database =
 		'FOLDER': 'Workspace',
 		'REQUEST': 'Workspace',
 		'LIST': 'Environment',
-		'ACTIVE_REQUEST': 'Active'
+		'ACTIVE_REQUEST': 'Active',
+		'USER_SETTINGS': 'UserSettings'
 	}
 };
 

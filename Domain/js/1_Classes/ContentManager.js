@@ -21,16 +21,16 @@ class ContentManager
 	{
 		this.DOMHandler = new DOMHandler();
 		this.DBHandler = new DBHandler(_database);
+
 		this.elementTypes = _database.types;
 		this.elementContainers = _database.tables;
 
 		this.elementContainers.forEach((container) =>
 		{
-			if (container.skip === true) { return; }
 			container.element = document.getElementById(container.id);
 		});
 
-		this.restoreAllElements();
+		this._restoreAllElements();
 
 		this.LanguageHandler = new LanguageHandler(this.DOMHandler);
 	}
@@ -70,11 +70,24 @@ class ContentManager
 		return newElement.id;
 	}
 
+	updateElementById(_type, _id)
+	{
+		
+	}
+
+	setLanguage(language = 'EN')
+	{
+		this.LanguageHandler.setLanguage(language);
+	}
+	//#endregion
+	
+	//#region Private Methods
+
 	/**
-	 * Restores all elements from the database to the HTML document.
+	 * @private Restores all elements from the database to the HTML document.
 	 * @return {void} No return value.
 	 */
-	restoreAllElements()
+	_restoreAllElements()
 	{
 		this.elementContainers.forEach((container) =>
 		{
@@ -90,14 +103,6 @@ class ContentManager
 			});
 		});
 	}
-
-	updateElementById(_type, _id)
-	{
-		
-	}
-	//#endregion
-	
-	//#region Private Methods
 	/**
 	 * @private Checks the _type parameter against the types{array}.
 	 * @param {string} _type - The _type to be checked in types{object}.

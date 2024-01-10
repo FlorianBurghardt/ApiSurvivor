@@ -12,6 +12,13 @@ function ready()
 	addButton.textContent = "Add Elements";
 	addButton.onclick = function () { add() };
 	worspace.appendChild(addButton);
+	
+	var worspace = document.getElementById("WorkspaceMenuBody");
+	var addButton = document.createElement("Button");
+	addButton.id = "Add_UserSettings";
+	addButton.textContent = "Add UserSettings";
+	addButton.onclick = function () { addSettings() };
+	worspace.appendChild(addButton);
 }
 // Site resize event
 function resize()
@@ -24,9 +31,14 @@ function setHeaderSpace()
 	height = header.clientHeight;
 	headerSpace.style.height = height + "px";
 }
+function languageChange(language = 'EN')
+{
+	contentManager.setLanguage(language);
+}
+
+// TODO: Temporary test data
 function add()
 {
-	// Add test data
 	try
 	{
 		// 'Workspace'
@@ -44,6 +56,17 @@ function add()
 		contentManager.addElement('LIST', 'Dev');
 		contentManager.addElement('LIST', 'PreProd');
 		contentManager.addElement('LIST', 'Prod');
+	}
+	catch (error)
+	{
+		console.log(error);
+	}
+}
+function addSettings()
+{
+	try
+	{
+		contentManager.addElement('USERSETTINGS', 'Language');
 	}
 	catch (error)
 	{
