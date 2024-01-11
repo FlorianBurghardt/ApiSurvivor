@@ -12,12 +12,11 @@ function ready()
 	addButton.textContent = "Add Elements";
 	addButton.onclick = function () { add() };
 	worspace.appendChild(addButton);
-	
-	var worspace = document.getElementById("WorkspaceMenuBody");
+
 	var addButton = document.createElement("Button");
-	addButton.id = "Add_UserSettings";
-	addButton.textContent = "Add UserSettings";
-	addButton.onclick = function () { addSettings() };
+	addButton.id = "Test_Button";
+	addButton.textContent = "DB Test";
+	addButton.onclick = function () { db() };
 	worspace.appendChild(addButton);
 }
 // Site resize event
@@ -31,9 +30,9 @@ function setHeaderSpace()
 	height = header.clientHeight;
 	headerSpace.style.height = height + "px";
 }
-function languageChange(language = 'EN')
+function languageChange(language = null)
 {
-	contentManager.setLanguage(language);
+	program.setLanguage(language);
 }
 
 // TODO: Temporary test data
@@ -42,35 +41,35 @@ function add()
 	try
 	{
 		// 'Workspace'
-		var id = contentManager.addElement('FOLDER', 'CardService');
-		id = contentManager.addElement('FOLDER', 'Cards', id);
-		contentManager.addElement('REQUEST', 'Card', id);
-		contentManager.addElement('REQUEST', 'Card', id);
-		id = contentManager.addElement('FOLDER', 'MoreCards', id);
-		contentManager.addElement('REQUEST', 'Card', id);
-		contentManager.addElement('REQUEST', 'Card', id);
-		id = contentManager.addElement('FOLDER', 'CDC-Integration');
-		contentManager.addElement('REQUEST', 'CustomerByUID', id);
-		contentManager.addElement('REQUEST', 'CustomerByEmail', id);
+		var id = program.addElement('FOLDER', 'CardService');
+		id = program.addElement('FOLDER', 'Cards', id);
+		program.addElement('REQUEST', 'Card', id);
+		program.addElement('REQUEST', 'Card', id);
+		id = program.addElement('FOLDER', 'MoreCards', id);
+		program.addElement('REQUEST', 'Card', id);
+		program.addElement('REQUEST', 'Card', id);
+		id = program.addElement('FOLDER', 'CDC-Integration');
+		program.addElement('REQUEST', 'CustomerByUID', id);
+		program.addElement('REQUEST', 'CustomerByEmail', id);
 		// 'Environment'
-		contentManager.addElement('LIST', 'Dev');
-		contentManager.addElement('LIST', 'PreProd');
-		contentManager.addElement('LIST', 'Prod');
+		program.addElement('LIST', 'Dev');
+		program.addElement('LIST', 'PreProd');
+		program.addElement('LIST', 'Prod');
 	}
 	catch (error)
 	{
 		console.log(error);
 	}
 }
-function addSettings()
+function db()
 {
-	try
-	{
-		contentManager.addElement('USERSETTINGS', 'Language');
-	}
-	catch (error)
-	{
-		console.log(error);
-	}
+	var newElement = {
+		'id': 'Folder',
+		'name': 'Test Folder',
+		'type': 'FOLDER'
+	};
+	data.addToDatabase(newElement, 'Workspace');
 }
 //#endregion
+
+//<button class="ms-2 btn btn-success btn-sm">...</button>

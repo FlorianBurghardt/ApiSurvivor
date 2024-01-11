@@ -88,7 +88,7 @@ class DOMHandler
 		if (_directParent !== null && !this.isElement(_directParent)) { throw new Exception('Direct parent "' + _directParent + '" is not a DOM element', 2003); }
 		if (_id !== null && typeof _id !== 'string') { throw new Exception('ID "' + _id + '" is not a string', 2004); }
 	
-		var newElement = [];
+		var newElement = {};
 		newElement.type = _type;
 		newElement.name = _name;
 		newElement.id = _id !== null ? this._createID(_id, true) : this._createID(_name);
@@ -100,10 +100,10 @@ class DOMHandler
 		{
 			// ToDo: CleanUp this switch remove methods to separate classes
 			case 'LIST':
-				newElement.element = this._createListElement(newElement.id, newElement.name, parent);
+				this._createListElement(newElement.id, newElement.name, parent);
 				break;
 			case 'FOLDER':
-				newElement.element = this._createFolderElement(newElement.id, newElement.name, parent);
+				this._createFolderElement(newElement.id, newElement.name, parent);
 				break;
 			case 'REQUEST':
 				if (_requestMethod !== null)
@@ -113,7 +113,10 @@ class DOMHandler
 				}
 				else { _requestMethod = 'GET'; }
 				newElement.method = _requestMethod;
-				newElement.element = this._createRequestElement(newElement.id, newElement.name, parent, newElement.method);
+				this._createRequestElement(newElement.id, newElement.name, parent, newElement.method);
+				break;
+			case 'USER_SETTING':
+				this._createUserSettingElement(newElement.id, newElement.name, parent);
 				break;
 			default:
 				throw new Exception('Undefined type "' + newElement.type + '". Element could not be created', 2006);
@@ -216,6 +219,16 @@ class DOMHandler
 		_parent.appendChild(newRequest);
 		this.setAttribute(newRequest.id, 'type', 'REQUEST');
 		return newRequest;
+	}
+	_createUserSettingElement(_id, _name, _parent)
+	{
+		const newListItem = document.createElement('li');
+		newListItem.id = 'UserSetting_' + _id;
+		newListItem.textContent = _name;
+
+		_parent.appendChild(newListItem);
+		this.setAttribute(newListItem.id, 'type', 'USER_SETTING');
+		return newListItem;
 	}
 
 	/**

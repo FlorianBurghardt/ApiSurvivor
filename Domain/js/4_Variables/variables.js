@@ -25,7 +25,7 @@ var database =
 		},
 		{
 			'id':'UserSettingsList',
-			'name':'UserSettings'
+			'name':'UserSetting'
 		}
 	],
 	'types':
@@ -34,7 +34,7 @@ var database =
 		'REQUEST': 'Workspace',
 		'LIST': 'Environment',
 		'ACTIVE_REQUEST': 'Active',
-		'USER_SETTINGS': 'UserSettings'
+		'USER_SETTING': 'UserSetting'
 	}
 };
 
@@ -51,4 +51,5 @@ const RequestMethod =
 };
 
 // Application initialization
-const contentManager = new ContentManager(database);
+const program = new Program(database);
+const data = new DBHandler(database);

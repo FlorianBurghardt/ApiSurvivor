@@ -1,7 +1,7 @@
 /**
  * Class to handle all content usecases in the API-Survivor.
  */
-class ContentManager
+class Program
 {
 	//#region Constructor
 	/**
@@ -25,9 +25,11 @@ class ContentManager
 		this.elementTypes = _database.types;
 		this.elementContainers = _database.tables;
 
+		this.elementStructure = {};
 		this.elementContainers.forEach((container) =>
 		{
 			container.element = document.getElementById(container.id);
+			this.elementStructure[container.name] = {};
 		});
 
 		this._restoreAllElements();
@@ -61,11 +63,13 @@ class ContentManager
 		let elementContainer = this._getContainerByType(_type);
 		let directParent = document.getElementById(_directParentId);
 
-		const newElement = this.DOMHandler.createElementByType(_type, _name, elementContainer.element, directParent);
+		var newElement = this.DOMHandler.createElementByType(_type, _name, elementContainer.element, directParent);
 
 		if (newElement === null || newElement === undefined) { throw new Exception('Could not create new element', 1102); }
+		if (newElement.id === undefined) { throw new Exception('Object has no id, cannot be saved to database', 1103); }
 
-		this.DBHandler.addToDatabase({ id: newElement.id, name: newElement.name, type: newElement.type, parentID: newElement.parentID, method: newElement.method }, elementContainer.name);
+		newElement = this._updateStructure(elementContainer.name, newElement);
+		this.DBHandler.addToDatabase(newElement, elementContainer.name);
 		
 		return newElement.id;
 	}
@@ -75,9 +79,17 @@ class ContentManager
 		
 	}
 
-	setLanguage(language = 'EN')
+	setLanguage(language = null)
 	{
 		this.LanguageHandler.setLanguage(language);
+		var newElement = {
+			'id': 'Language',
+			'name': language,
+			'type': 'USER_SETTING',
+			'structure' : 1
+		};
+		data.addToDatabase(newElement, 'UserSetting');
+		document.getElementById('UserSetting_Language').textContent = language;
 	}
 	//#endregion
 	
@@ -128,6 +140,18 @@ class ContentManager
 		if (elementContainer === null) { throw new Exception('"' + containerName + '" is not defined in the elementContainer{string}', 1901); }
 
 		return elementContainer;
+	}
+
+	_updateStructure(_elementContainer, _element)
+	{
+		if (!this.elementStructure[_elementContainer].hasOwnProperty(_element.parentID))
+		{
+			this.elementStructure[_elementContainer][_element.parentID] = 0;
+		}
+		this.elementStructure[_elementContainer][_element.id] = this.elementStructure[_elementContainer][_element.parentID] + 1;
+		_element.structure = this.elementStructure[_elementContainer][_element.id];
+
+		return _element;
 	}
 	//#endregion
 }

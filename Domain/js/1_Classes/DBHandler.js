@@ -36,14 +36,11 @@ class DBHandler
 		this.databaseVersion = _database.version;
 		this.databaseTables = _database.tables;
 
-		this.elementStructure = {};
 		this.databaseTables.forEach((table) =>
 		{
 			if (table.id === undefined) { throw new Exception('_database.tables[].id{string} is not defined', 3003); }
 			if (table.name === undefined) { throw new Exception('_database.tables[].name{string} is not defined', 3004); }
-			this.elementStructure[table.name] = {};
 		});
-		this.response = [];
 	}
 	//#endregion
 
@@ -55,7 +52,6 @@ class DBHandler
 	 */
 	addToDatabase(_data, _tableName)
 	{
-		_data = this._updateStructure(_tableName, _data);
 		const request = this._connectToDatabase();
 		request.onsuccess = (event) =>
 		{
@@ -166,18 +162,6 @@ class DBHandler
 			}
 		};
 		return request;
-	}
-
-	_updateStructure(_tableName, _data)
-	{
-		if (!this.elementStructure[_tableName].hasOwnProperty(_data.parentID))
-		{
-			this.elementStructure[_tableName][_data.parentID] = 0;
-		}
-		this.elementStructure[_tableName][_data.id] = this.elementStructure[_tableName][_data.parentID] + 1;
-		_data.structure = this.elementStructure[_tableName][_data.id];
-
-		return _data;
 	}
 	//#endregion
 }
